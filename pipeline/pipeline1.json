@@ -1,0 +1,69 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"value": "@json(pipeline().parameters.column-mapping)",
+						"type": "Expression"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlobStorageSinkFileStore2",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder": "dummy-1"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlDWTable1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"column-mapping": {
+				"type": "string",
+				"defaultValue": {
+					"type": "TabularTranslator",
+					"columnMappings": {
+						"X": "B",
+						"Y": "A"
+					}
+				}
+			}
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
