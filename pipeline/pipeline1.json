@@ -47,6 +47,18 @@
 				]
 			}
 		],
+		"parameters": {
+			"column-mapping": {
+				"type": "string",
+				"defaultValue": {
+					"type": "TabularTranslator",
+					"columnMappings": {
+						"X": "B",
+						"Y": "A"
+					}
+				}
+			}
+		},
 		"annotations": []
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
