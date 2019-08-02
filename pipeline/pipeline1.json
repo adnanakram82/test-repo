@@ -28,7 +28,11 @@
 							"useTypeDefault": true
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"value": "@json(pipeline().parameters.column-mapping)",
+						"type": "Expression"
+					}
 				},
 				"inputs": [
 					{
