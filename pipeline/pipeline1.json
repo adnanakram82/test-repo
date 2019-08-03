@@ -39,7 +39,11 @@
 						"referenceName": "AzureBlobStorageSinkFileStore2",
 						"type": "DatasetReference",
 						"parameters": {
-							"folder": "dummy-1"
+							"folder": "dummy-1",
+							"file-name": {
+								"value": "@pipeline().parameters.myfile",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -57,10 +61,14 @@
 				"defaultValue": {
 					"type": "TabularTranslator",
 					"columnMappings": {
-						"X": "B",
-						"Y": "A"
+						"Prop_0": "B",
+						"Prop_1": "A"
 					}
 				}
+			},
+			"myfile": {
+				"type": "string",
+				"defaultValue": "a.txt"
 			}
 		},
 		"annotations": []
