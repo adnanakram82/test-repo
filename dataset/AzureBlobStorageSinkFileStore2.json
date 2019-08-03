@@ -26,10 +26,7 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": {
-				"value": "@dataset().file-name",
-				"type": "Expression"
-			},
+			"fileName": "a.txt",
 			"folderPath": {
 				"value": "@dataset().folder",
 				"type": "Expression"
