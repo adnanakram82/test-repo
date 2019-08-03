@@ -11,7 +11,8 @@
 				"type": "String"
 			},
 			"file-name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "'a.txt'"
 			}
 		},
 		"annotations": [],
