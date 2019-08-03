@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "a.txt"
+					},
+					{
+						"name": "Target",
+						"value": "b.txt"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "BlobSource",
@@ -40,10 +49,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folder": "dummy-1",
-							"file-name": {
-								"value": "@pipeline().parameters.myfile",
-								"type": "Expression"
-							}
+							"file-name": "a.txt"
 						}
 					}
 				],
@@ -58,17 +64,11 @@
 		"parameters": {
 			"column-mapping": {
 				"type": "string",
-				"defaultValue": {
-					"type": "TabularTranslator",
-					"columnMappings": {
-						"Prop_0": "B",
-						"Prop_1": "A"
-					}
-				}
+				"defaultValue": "'{\"type\":\"TabularTranslator\",\"columnMappings\":{\"Prop_0\":\"B\",\"Prop_1\":\"A\"}}'"
 			},
 			"myfile": {
 				"type": "string",
-				"defaultValue": "a.txt"
+				"defaultValue": "'a.txt'"
 			}
 		},
 		"annotations": []
