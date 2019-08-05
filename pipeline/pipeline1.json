@@ -15,12 +15,12 @@
 				},
 				"userProperties": [
 					{
-						"name": "Source",
-						"value": "a.txt"
-					},
-					{
 						"name": "Target",
 						"value": "b.txt"
+					},
+					{
+						"name": "Source",
+						"value": "@{'input'}/lnd_tbla.txt"
 					}
 				],
 				"typeProperties": {
@@ -30,25 +30,16 @@
 					},
 					"sink": {
 						"type": "SqlDWSink",
-						"allowPolyBase": true,
-						"polyBaseSettings": {
-							"rejectValue": 0,
-							"rejectType": "value",
-							"useTypeDefault": true
-						}
+						"allowPolyBase": false
 					},
-					"enableStaging": false,
-					"translator": {
-						"value": "@json(pipeline().parameters.column-mapping)",
-						"type": "Expression"
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "AzureBlobStorageSinkFileStore2",
 						"type": "DatasetReference",
 						"parameters": {
-							"folder": "dummy-1",
+							"folder": "input",
 							"file-name": "a.txt"
 						}
 					}
@@ -63,8 +54,7 @@
 		],
 		"parameters": {
 			"column-mapping": {
-				"type": "string",
-				"defaultValue": "'{\"type\":\"TabularTranslator\",\"columnMappings\":{\"Prop_0\":\"B\",\"Prop_1\":\"A\"}}'"
+				"type": "object"
 			},
 			"myfile": {
 				"type": "string",
